@@ -31,10 +31,15 @@ Route::patch("/hello", function(){
 
 Route::post('/createRandomUser', UserController::class.'@createRandomUser');
 
-Route::post('/createArticle', ArticleController::class.'@createArticle');
+Route::post('/createArticle', ArticleController::class.'@createArticle')->middleware("auth:sanctum");
 Route::get('/getArticles', ArticleController::class.'@getArticle');
 
 Route::get('/getArticle/{id}', ArticleController::class.'@getArticle');
 
-Route::delete('/deleteArticle/{id}', ArticleController::class.'@deleteArticle');
+Route::delete('/deleteArticle/{id}', ArticleController::class.'@deleteArticle')->middleware("auth:sanctum");
 Route::put('/updateArticle/{id}', ArticleController::class.'@updateArticle');
+
+
+Route::post('/register', UserController::class.'@register');
+
+Route::post('/login', UserController::class.'@login');

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class ArticleController extends Controller
 {
     function createArticle(Request $request){
+        return $request->user();
         $aricle = Article::create([
             "title" => "SE vs game Dev",
             "body" => "please keep going"
